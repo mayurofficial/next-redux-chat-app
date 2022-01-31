@@ -1,5 +1,4 @@
 // App wide dispatcher
-
 import Stores from "../store";
 import Actions from "../actions/appActions";
 
@@ -16,6 +15,9 @@ const AppDispatcher = {
   },
   updateUserInfo: (data) => {
     Stores.dispatch({ type: Actions.LOGIN, data });
+  },
+  signup: (data) =>{
+    Stores.dispatch({ type: Actions.SIGNUP, data});
   }
 };
 

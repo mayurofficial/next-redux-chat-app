@@ -7,6 +7,29 @@ import PublicLayout from "../layouts/publicLayout"
 import PrivateLayout from "../layouts/privateLayout"
 import { defaultTheme } from "../themes/defaultTheme"
 import store from "../redux/store"
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+
+
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyAZQU2OV3ihufsCgqbb-iFJSOp8owA4Y28",
+  authDomain: "chatappredux-353b2.firebaseapp.com",
+  projectId: "chatappredux-353b2",
+  storageBucket: "chatappredux-353b2.appspot.com",
+  messagingSenderId: "811490185619",
+  appId: "1:811490185619:web:7470e1021be17f32b49866",
+  measurementId: "G-M9VMG60XTD"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+
+
 
 function MyApp({ Component, pageProps }) {
   const currentTheme = createTheme(defaultTheme)
@@ -18,8 +41,8 @@ function MyApp({ Component, pageProps }) {
   const Wrapper = isPublic
     ? PublicLayout
     : isPrivate
-    ? PrivateLayout
-    : React.Fragment
+      ? PrivateLayout
+      : PublicLayout
 
   return (
     <ReduxProvider store={store}>
